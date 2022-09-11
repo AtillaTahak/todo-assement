@@ -8,7 +8,7 @@ function Header() {
     console.log('search');
   };
   return (
-    <HeaderDiv>
+    <HeaderDiv data-testid="Search">
       <Input type="search" placeholder="Search" />
       <Button type="search" onClick={handleSearch} />
     </HeaderDiv>

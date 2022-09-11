@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/My Tasks/i);
+  const linkElement = screen.getByTestId(/Search/i);
   expect(linkElement).toBeInTheDocument();
 });

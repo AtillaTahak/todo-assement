@@ -7,9 +7,9 @@ import theme from '../../assets/styles/theme';
 test('renders header', () => {
   render(
     <ThemeProvider theme={theme}>
-      <Header title="My Test" />
+      <Header title="Search" />
     </ThemeProvider>,
   );
-  const linkElement = screen.getByText(/My Test/i);
+  const linkElement = screen.getByText(/Search/i);
   expect(linkElement).toBeInTheDocument();
 });

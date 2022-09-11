@@ -26,7 +26,7 @@ function index({ type }) {
   if (type === 'Add') {
     return (
       <FooterButton className="addButton">
-        <BsPlusStyled className="footer-button-add" />
+        <BsPlusStyled className="footer-button-add" data-testid="add" />
       </FooterButton>
     );
   }
