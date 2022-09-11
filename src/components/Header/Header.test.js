@@ -7,7 +7,7 @@ import theme from '../../assets/styles/theme';
 test('renders header', () => {
     render(
         <ThemeProvider theme={theme}>
-            <Header title="My Tasks" />
+            <Header title="My Test" />
         </ThemeProvider>
     );
     const linkElement = screen.getByText(/My Test/i);
