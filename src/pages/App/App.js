@@ -1,11 +1,14 @@
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../../assets/styles/theme';
+import theme from '../../assets/styles/theme';
+import GlobalStyle from '../../assets/styles/GlobalStyle';
+import Header from '../../components/Header';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <h1>App</h1>
+        <GlobalStyle />
+        <Header title="My Tasks" />
       </div>
     </ThemeProvider>
   );
