@@ -6,5 +6,9 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
+
+.addButton {
+  margin-bottom: 80px;
+}
 `;
 export default GlobalStyle;

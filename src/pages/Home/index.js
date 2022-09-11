@@ -1,9 +1,15 @@
 import React from 'react';
+import Cards from '../../components/Cards';
 
-function index() {
+function Home() {
   return (
-    <div>index</div>
+    <>
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
+    </>
   );
 }
 
-export default index;
+export default Home;

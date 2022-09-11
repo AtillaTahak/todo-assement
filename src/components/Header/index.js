@@ -3,17 +3,16 @@ import Button from '../Button';
 import HeaderDiv from './Header.styled';
 import Input from '../Input';
 
-function index({ title }) {
+function Header() {
   const handleSearch = () => {
     console.log('search');
   };
   return (
     <HeaderDiv>
-      <h1>{title}</h1>
       <Input type="search" placeholder="Search" />
       <Button type="search" onClick={handleSearch} />
     </HeaderDiv>
   );
 }
 
-export default index;
+export default Header;

@@ -5,7 +5,7 @@ function index(props) {
   if (props.type === 'search') {
     return (
       <div>
-        <SearchInput />
+        <SearchInput placeholder={props.placeholder} />
       </div>
     );
   }
