@@ -5,12 +5,20 @@ const CheckSquare = styled(AiOutlineCheckSquare)`
     font-size: 4rem;
     color: ${({ theme }) => theme.colors.primary};
     margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+        color: ${({ theme }) => theme.colors.secondary};
+    }
 `;
 
 const Delete = styled(AiFillDelete)`
     font-size: 4rem;
     color: ${({ theme }) => theme.colors.primary};
     margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+        color: ${({ theme }) => theme.colors.secondary};
+    }
 `;
 
 const Card = styled.div`

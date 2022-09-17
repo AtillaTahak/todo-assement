@@ -3,6 +3,9 @@ import Button from '../Button';
 import SaveFormStyled from './SaveForm.styled';
 
 function SaveForm() {
+  const [todoTitle, setTodoTitle] = React.useState('');
+  const [userName, setUserName] = React.useState('');
+
   return (
     <SaveFormStyled>
       <div className="container">
@@ -10,24 +13,18 @@ function SaveForm() {
           <div className="col-12">
             <div className="form-group">
               <label htmlFor="todoTitle">Todo Title</label>
-              <input type="text" className="form-control" id="todoTitle" placeholder="Todo Title" />
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="form-group">
-              <label htmlFor="Task">Task</label>
-              <textarea className="form-control" id="Task" rows="3" placeholder="Write anything in your mind" />
+              <input type="text" onChange={(e) => setTodoTitle(e.target.value)} className="form-control" id="todoTitle" placeholder="Todo Title" />
             </div>
           </div>
           <div className="col-12">
             <div className="form-group">
               <label htmlFor="userName">User Name</label>
-              <input type="text" className="form-control" id="userName" placeholder="Enter User Name" />
+              <input type="text" onChange={(e) => setUserName(e.target.value)} className="form-control" id="userName" placeholder="Enter User Name" />
             </div>
           </div>
           <div className="col-12">
             <div className="form-group">
-              <Button type="Save" />
+              <Button type="Save" todoTitle={todoTitle} userName={userName} />
             </div>
           </div>
         </div>

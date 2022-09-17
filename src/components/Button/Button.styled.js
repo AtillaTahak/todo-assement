@@ -83,8 +83,24 @@ const BsSearchStyled = styled(BsSearch)`
 `;
 
 const FooterButtonSave = styled.button`
-    background-color: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.light};
+    background-color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.white};
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.primaryDark};
+    }
+`;
+const ButtonSave = styled.button`
+    background-color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.white};
     border: 1px solid ${({ theme }) => theme.colors.white};
     width: 100%;
     padding: 10px 20px;
@@ -101,5 +117,5 @@ const FooterButtonSave = styled.button`
 
 export {
   SearchButton, BsSearchStyled, BsMoonStyled, BsSunStyled, BsHouseStyled, BsPlusStyled,
-  FooterButton, FooterButtonSave,
+  FooterButton, FooterButtonSave, ButtonSave,
 };

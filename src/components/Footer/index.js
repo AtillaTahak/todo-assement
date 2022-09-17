@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 import FooterStyled from './Footer.styled';
 import { DataContext, useContext } from '../../context/DataContext';
 import SaveForm from '../SaveForm';
 
-function Footer() {
+function Footer({ setGetFetchData }) {
   const { openForm } = useContext(DataContext);
 
   console.log(openForm);
@@ -14,7 +15,7 @@ function Footer() {
         !openForm ? (
           <>
             <Button type="Home" />
-            <Button type="Add" />
+            <Button type="Add" setGetFetchData={setGetFetchData} />
             <Button type="ColorMode" />
           </>
         ) : (
@@ -24,5 +25,9 @@ function Footer() {
     </FooterStyled>
   );
 }
+
+Footer.propTypes = {
+  setGetFetchData: PropTypes.func.isRequired,
+};
 
 export default Footer;
