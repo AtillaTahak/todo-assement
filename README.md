@@ -37,9 +37,9 @@
 
 ## Overview
 
-[screenshot_123.jpg]
 
-[screenshot_1233.jpg]
+![Image of the mobil view](screenshot_123.jpg)
+![Image of the dark mobil view](screenshot_1233.jpg)
 
 ### Built With
 
