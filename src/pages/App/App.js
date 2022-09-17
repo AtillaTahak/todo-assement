@@ -7,7 +7,6 @@ import Home from '../Home';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { DataContext } from '../../context/DataContext';
-import useFetch from '../../hooks/useFetch';
 
 function App() {
   const [openForm, setOpenForm] = useState(false);
@@ -19,10 +18,7 @@ function App() {
   };
 
   const url = 'https://63122757f5cba498da8daf58.mockapi.io/todos';
-  const { // eslint-disable-next-line no-unused-vars
-    data, error, loading, refetch,
-  } = useFetch(url); // eslint-disable-next-line no-unused-vars
-  // eslint-disable-next-line no-unused-vars
+
   const [getFetchData, setGetFetchData] = React.useState([]);
   React.useEffect(() => {
     axios(url, {
@@ -31,9 +27,8 @@ function App() {
         'Content-Type': 'application/json',
       },
     }).then((response) => setGetFetchData(response.data));
-  }, [data.length]);
+  }, [getFetchData.length]);
 
-  console.log(data.length);
   const dataContextApi = {
     openForm,
     setOpenForm,
@@ -41,6 +36,8 @@ function App() {
     setColorMode,
     ...methods,
     appendMethod,
+    getFetchData,
+    setGetFetchData,
   };
   useEffect(() => {
     if (colorMode === 'light') {
@@ -57,15 +54,8 @@ function App() {
         <div className="App">
           <GlobalStyle />
           <Header />
-          <Home
-            fetchdata={getFetchData}
-            error={error}
-            loading={loading}
-            setGetFetchData={setGetFetchData}
-          />
-          <Footer
-            setGetFetchData={refetch}
-          />
+          <Home />
+          <Footer />
         </div>
       </ThemeProvider>
     </DataContext.Provider>

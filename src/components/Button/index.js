@@ -6,20 +6,15 @@ import {
 } from './Button.styled';
 import { DataContext, useContext } from '../../context/DataContext';
 import useLocalStorage from '../../hooks/use-localstorage';
-import useFetch from '../../hooks/useFetch';
 
 function Button({
-  type, todoTitle, userName, setGetFetchData,
+  type, todoTitle, userName,
 }) {
   const { openForm, setOpenForm } = useContext(DataContext);
   const { colorMode, setColorMode } = useContext(DataContext);
+  const { getFetchData, setGetFetchData } = useContext(DataContext);
   const url = 'https://63122757f5cba498da8daf58.mockapi.io/todos/';
   const [userNameLocal, setUserNameLocal] = useLocalStorage('name', []);
-  const { // eslint-disable-next-line no-unused-vars
-    data, error, loading, refetch,
-  } = useFetch(url); // eslint-disable-next-line no-unused-vars
-  // eslint-disable-next-line no-unused-vars
-
   const handleOpenForm = () => {
     setOpenForm(!openForm);
   };
@@ -57,17 +52,16 @@ function Button({
             name: userName,
           },
         ]);
+        setGetFetchData([
+          ...getFetchData,
+          {
+            id: data.id,
+            content: todoTitle,
+            isCompleted: false,
+          },
+        ]);
         setOpenForm(false);
       });
-
-      setGetFetchData([
-        ...data,
-        {
-          id: data.id,
-          content: todoTitle,
-          isCompleted: false,
-        },
-      ]);
     }
   };
 
@@ -116,11 +110,9 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   todoTitle: PropTypes.string,
   userName: PropTypes.string,
-  setGetFetchData: PropTypes.func,
 };
 Button.defaultProps = {
   todoTitle: '',
   userName: '',
-  setGetFetchData: () => {},
 };
 export default Button;

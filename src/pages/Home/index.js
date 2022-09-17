@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Cards from '../../components/Cards';
 import HomeBodyStyled from './Home.styled';
+import { DataContext, useContext } from '../../context/DataContext';
 
-function Home({ fetchdata, error, loading }) {
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Something went wrong</h1>;
+function Home() {
+  const { getFetchData } = useContext(DataContext);
   return (
     <HomeBodyStyled>
-      {fetchdata && fetchdata.map((repo) => (
+      {getFetchData && getFetchData.map((repo) => (
         <Cards
           key={repo.id}
           id={repo.id}
@@ -19,11 +18,5 @@ function Home({ fetchdata, error, loading }) {
     </HomeBodyStyled>
   );
 }
-
-Home.propTypes = {
-  fetchdata: PropTypes.isRequired,
-  error: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
 
 export default Home;
