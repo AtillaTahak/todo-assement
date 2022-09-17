@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   SearchButton, BsSearchStyled, BsMoonStyled, BsHouseStyled, BsPlusStyled,
-  FooterButton, FooterButtonSave, ButtonSave,
+  FooterButton, FooterButtonSave,
 } from './Button.styled';
 import { DataContext, useContext } from '../../context/DataContext';
 import useLocalStorage from '../../hooks/use-localstorage';
@@ -15,19 +15,6 @@ function Button({
   const { getFetchData, setGetFetchData } = useContext(DataContext);
   const url = 'https://63122757f5cba498da8daf58.mockapi.io/todos/';
   const [userNameLocal, setUserNameLocal] = useLocalStorage('name', []);
-  const handleOpenForm = () => {
-    setOpenForm(!openForm);
-  };
-  const handleColorMode = () => {
-    if (colorMode === 'light') {
-      setColorMode('dark');
-    } else {
-      setColorMode('light');
-    }
-  };
-  const handleSaveButton = () => {
-    setOpenForm(!openForm);
-  };
   const insertApi = async (url) => {
     const response = await fetch(url, {
       method: 'POST',
@@ -42,26 +29,38 @@ function Button({
     const data = await response.json();
     return data;
   };
-  const handleSave = () => {
-    if (todoTitle !== '') {
-      insertApi(url).then((data) => {
-        setUserNameLocal([
-          ...userNameLocal,
-          {
-            id: data.id,
-            name: userName,
-          },
-        ]);
-        setGetFetchData([
-          ...getFetchData,
-          {
-            id: data.id,
-            content: todoTitle,
-            isCompleted: false,
-          },
-        ]);
-        setOpenForm(false);
-      });
+  const handleOpenForm = () => {
+    setOpenForm(!openForm);
+  };
+  const handleColorMode = () => {
+    if (colorMode === 'light') {
+      setColorMode('dark');
+    } else {
+      setColorMode('light');
+    }
+  };
+  const handleSaveButton = () => {
+    if (openForm === true) {
+      if (todoTitle !== '') {
+        insertApi(url).then((data) => {
+          setUserNameLocal([
+            ...userNameLocal,
+            {
+              id: data.id,
+              name: userName,
+            },
+          ]);
+          setGetFetchData([
+            ...getFetchData,
+            {
+              id: data.id,
+              content: todoTitle,
+              isCompleted: false,
+            },
+          ]);
+          setOpenForm(false);
+        });
+      }
     }
   };
 
@@ -95,9 +94,12 @@ function Button({
       );
     case 'Save':
       return (
-        <FooterButtonSave onClick={handleSaveButton}>
-          <ButtonSave onClick={handleSave}>Save</ButtonSave>
-        </FooterButtonSave>
+        <div>
+          <FooterButtonSave onClick={handleSaveButton}>
+            <span>Save</span>
+          </FooterButtonSave>
+        </div>
+
       );
     default:
       return (
