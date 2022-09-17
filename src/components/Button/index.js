@@ -15,6 +15,7 @@ function Button({
   const { getFetchData, setGetFetchData } = useContext(DataContext);
   const url = 'https://63122757f5cba498da8daf58.mockapi.io/todos/';
   const [userNameLocal, setUserNameLocal] = useLocalStorage('name', []);
+  const [todoValidation, setTodoValidation] = React.useState(false);
   const insertApi = async (url) => {
     const response = await fetch(url, {
       method: 'POST',
@@ -41,7 +42,7 @@ function Button({
   };
   const handleSaveButton = () => {
     if (openForm === true) {
-      if (todoTitle !== '') {
+      if (todoTitle !== '' && todoTitle.length > 3) {
         insertApi(url).then((data) => {
           setUserNameLocal([
             ...userNameLocal,
@@ -60,6 +61,8 @@ function Button({
           ]);
           setOpenForm(false);
         });
+      }else{
+        setTodoValidation(true);
       }
     }
   };
@@ -97,6 +100,7 @@ function Button({
         <div>
           <FooterButtonSave onClick={handleSaveButton}>
             <span>Save</span>
+            {todoValidation && <span className="validation">Todo must be at least 3 characters and should not be empty</span>}
           </FooterButtonSave>
         </div>
 

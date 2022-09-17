@@ -10,5 +10,10 @@ const GlobalStyle = createGlobalStyle`
 .addButton {
   margin-bottom: 80px;
 }
+.validation {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
 `;
 export default GlobalStyle;
