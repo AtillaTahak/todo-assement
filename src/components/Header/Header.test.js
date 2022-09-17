@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './App';
-import { DataContext } from '../../context/DataContext';
-
-const [openForm, setOpenForm] = useState(false);
-const [colorMode, setColorMode] = useState('light');
-const [methods, setMethods] = useState({});
+import { ThemeProvider } from 'styled-components';
+import React from 'react';
+import Header from './index';
+import theme from '../../assets/styles/theme';
 
 const appendMethod = (method) => {
   setMethods((prev) => ({ ...prev, [method.name]: method }));
@@ -23,11 +20,16 @@ const data = {
 
 const renderComponent = (component) => render(
   <DataContext.Provider value={data}>
-    {component}
+    <ThemeProvider theme={theme}>
+      {component}
+    </ThemeProvider>
   </DataContext.Provider>,
 );
+
 test('renders header', () => {
-  renderComponent(<App />);
-  const linkElement = screen.getByTestId(/Search/i);
+  renderComponent(
+    <Header title="Search" />,
+  );
+  const linkElement = screen.getByText(/Search/i);
   expect(linkElement).toBeInTheDocument();
 });
