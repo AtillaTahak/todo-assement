@@ -3,7 +3,7 @@
 <h1 align="center">{To do list}</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="https://popupsmart.com" target="_blank">Popupsmart</a>.
+   Solution for a challenge from  todo-assement with contextapi
 </div>
 
 <div align="center">
@@ -15,9 +15,7 @@
     <a href="https://github.com/AtillaTahak/todo-assement">
       Solution
     </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx">
-      Challenge
+    <span> | </span>      
     </a>
   </h3>
 </div>
